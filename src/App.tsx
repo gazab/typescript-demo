@@ -17,15 +17,24 @@ const Card = (props: CardProps) => {
   );
 };
 
-class App extends Component {
-  render() {
+const CardList = (props: {cards: CardProps[]}) => {
+  return (
+    <div>
+      {props.cards.map(card => <Card {...card} />)}
+    </div>
+  );
+};
+
+
+const cards = [
+  {login: "Gustav", avatar_url:"https://demos.subinsb.com/isl-profile-pic/image/person.png"},
+  {login: "Linnea", avatar_url:"https://image.flaticon.com/icons/svg/163/163850.svg"}
+];
+
+function App()  {
     return (
-      <>
-        <Card login="Gustav" avatar_url="https://demos.subinsb.com/isl-profile-pic/image/person.png" />
-        <Card login="Linnea" avatar_url="https://image.flaticon.com/icons/svg/163/163850.svg" />
-      </>
+      <CardList cards={cards} />
     );
-  }
 }
 
 export default App;
