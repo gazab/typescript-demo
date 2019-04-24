@@ -32,8 +32,18 @@ const cards = [
 ];
 
 function App()  {
+
+  const [ users, setUsers ] = React.useState<CardProps[]>(cards);
+
+  function addRandomUser() {
+    setUsers(users.concat({login: "Gustav 1", avatar_url:"https://demos.subinsb.com/isl-profile-pic/image/person.png"}))
+  }
+
     return (
-      <CardList cards={cards} />
+      <div>
+        <button className="btn btn-primary" onClick={addRandomUser}>Add random user</button>
+        <CardList cards={users} />
+      </div>
     );
 }
 
