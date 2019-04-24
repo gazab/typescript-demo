@@ -26,17 +26,18 @@ const CardList = (props: {cards: CardProps[]}) => {
 };
 
 
-const cards = [
-  {login: "Gustav", avatar_url:"https://demos.subinsb.com/isl-profile-pic/image/person.png"},
-  {login: "Linnea", avatar_url:"https://image.flaticon.com/icons/svg/163/163850.svg"}
-];
+const cards: CardProps[] = [];
 
 function App()  {
 
   const [ users, setUsers ] = React.useState<CardProps[]>(cards);
 
   function addRandomUser() {
-    setUsers(users.concat({login: "Gustav 1", avatar_url:"https://demos.subinsb.com/isl-profile-pic/image/person.png"}))
+    fetch(`https://api.github.com/users?since=${Math.floor(Math.random()*10000)}`)
+    .then(resp => resp.json())
+    .then(function(data: CardProps[]) {
+        setUsers(users.concat(data[0]));
+    });
   }
 
     return (
