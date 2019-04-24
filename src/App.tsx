@@ -17,15 +17,13 @@ const Card = (props: CardProps) => {
   );
 };
 
-class App extends Component {
-  render() {
-    return (
-      <>
+function App()  {
+  return (
+    <>
         <Card login="Gustav" avatar_url="https://demos.subinsb.com/isl-profile-pic/image/person.png" />
         <Card login="Linnea" avatar_url="https://image.flaticon.com/icons/svg/163/163850.svg" />
-      </>
-    );
-  }
+    </>
+  );
 }
 
 export default App;
